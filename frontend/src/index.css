@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #f9fafb;
+    --color-surface: #ffffff;
+    --color-border: #e5e7eb;
+  }
+  .dark {
+    --color-bg: #030712;
+    --color-surface: #111827;
+    --color-border: #1f2937;
+  }
+
+  body {
+    @apply bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-600;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-card;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 shadow-sm hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-700 transition-all duration-150 shadow-sm active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium rounded-lg transition-all duration-150 active:scale-95;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-all duration-150 shadow-sm active:scale-95;
+  }
+
+  .input-base {
+    @apply w-full px-3 py-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-150;
+  }
+
+  .select-base {
+    @apply input-base cursor-pointer;
+  }
+
+  .textarea-base {
+    @apply input-base resize-none font-mono text-xs leading-relaxed;
+  }
+
+  .label-base {
+    @apply block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-1.5;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-gray-900 dark:text-gray-100;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-gray-100;
+  }
+
+  /* React Flow overrides */
+  .react-flow__node {
+    @apply !font-sans;
+  }
+}
+
+/* Custom React Flow node styles */
+.dfa-node-initial {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+.dfa-node-terminal {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.dfa-node-intermediate {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+.dfa-node-error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  animation: pulse 1s ease-in-out infinite;
+}
+.dfa-node-active {
+  animation: glow-pulse 0.8s ease-in-out infinite alternate;
+  outline: 3px solid #fbbf24;
+  outline-offset: 3px;
+}
+
+@keyframes glow-pulse {
+  from { box-shadow: 0 0 10px 2px rgba(251, 191, 36, 0.4); }
+  to   { box-shadow: 0 0 20px 8px rgba(251, 191, 36, 0.7); }
+}
